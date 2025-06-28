@@ -32,38 +32,40 @@
     <form action="#" method="POST">
       <form id="formDangky">
       <div class="mb-4">
-        <label for="name">Họ và tên</label>
-        <input type="text" id="name" name="name" />
-        <p id="error-name"
-          class="text-red-400 text-sm mt-1 hidden">🐧 bộ mầy không có tên hả gì?</p>
-      </div>
+      <form id="formDangKy">
+  <div class="mb-4">
+    <label for="name">Họ và tên</label>
+    <input type="text" id="name" name="name" />
+    <p id="error-name" class="text-red-400 text-sm mt-1 hidden">🐧 Tên là bắt buộc nghen bạn ơi!</p>
+  </div>
 
-      <div class="mb-4">
-        <label for="phone">Số điện thoại / Zalo</label>
-        <input type="tel" id="phone" name="phone" required />
-      </div>
+  <div class="mb-4">
+    <label for="phone">Số điện thoại / Zalo</label>
+    <input type="tel" id="phone" name="phone" />
+  </div>
 
-      <div class="mb-4">
-        <label for="character">Nhân vật yêu thích</label>
-        <select id="character" name="character" required>
-          <option value="">-- Chọn nhân vật --</option>
-          <option value="Yugo">Yugo</option>
-          <option value="Alice">Alice</option>
-          <option value="Bakuryu">Bakuryu</option>
-          <option value="Long">Long</option>
-          <option value="Shina">Shina</option>
-        </select>
-      </div>
+  <div class="mb-4">
+    <label for="character">Nhân vật yêu thích</label>
+    <select id="character" name="character">
+      <option value="">-- Chọn nhân vật --</option>
+      <option value="Yugo">Yugo</option>
+      <option value="Alice">Alice</option>
+      <option value="Bakuryu">Bakuryu</option>
+      <option value="Long">Long</option>
+      <option value="Shina">Shina</option>
+    </select>
+  </div>
 
-      <div class="mb-4">
-        <label for="note">Ghi chú thêm (nếu có)</label>
-        <textarea id="note" name="note" rows="3"></textarea>
-      </div>
+  <div class="mb-4">
+    <label for="note">Ghi chú thêm (nếu có)</label>
+    <textarea id="note" name="note" rows="3"></textarea>
+  </div>
 
-      <button type="submit" class="w-full py-2 bg-yellow-400 hover:bg-yellow-300 text-black font-semibold rounded-xl transition">
-        Gửi đăng ký
-      </button>
-    </form>
+  <button type="submit"
+    class="w-full py-2 bg-yellow-400 hover:bg-yellow-300 text-black font-semibold rounded-xl transition">
+    Gửi đăng ký
+  </button>
+</form>
   </div>
 </body>
 </html>
