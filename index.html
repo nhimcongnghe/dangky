@@ -3,69 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Đăng Ký Tham Gia Giải Đấu</title>
+  <title>Đăng Ký Giải Đấu Bloody Roar</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(circle at top, #1f1f1f, #0d0d0d);
+      background-color: #1f1f1f;
       color: white;
       font-family: 'Segoe UI', sans-serif;
     }
+
     input, select, textarea {
-      background-color: #1f2937;
+      background-color: #2d2d2d;
       color: white;
-      border: 1px solid #4b5563;
+      border: 1px solid #555;
       border-radius: 8px;
       padding: 0.5rem;
       width: 100%;
     }
+
     label {
-      display: block;
-      margin-bottom: 0.25rem;
       font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center">
+<body class="min-h-screen flex items-center justify-center px-4">
   <div class="max-w-md w-full p-6 bg-gray-800 rounded-xl shadow-lg">
-    <h1 class="text-2xl font-bold text-yellow-400 text-center mb-6">📝 Đăng Ký Giải Đấu Bloody Roar 4</h1>
-    <form action="#" method="POST">
-      <form id="formDangky">
+    <h1 class="text-2xl font-bold text-yellow-400 text-center mb-6">
+      📝 Đăng Ký Giải Đấu Bloody Roar 4
+    </h1>
+
+    <form id="formDangKy">
+      <!-- Họ tên -->
       <div class="mb-4">
-      <form id="formDangKy">
-  <div class="mb-4">
-    <label for="name">Họ và tên</label>
-    <input type="text" id="name" name="name" />
-    <p id="error-name" class="text-red-400 text-sm mt-1 hidden">🐧 Tên là bắt buộc nghen bạn ơi!</p>
+        <label for="name">Họ và tên</label>
+        <input type="text" id="name" name="name" />
+        <p id="error-name" class="text-red-400 text-sm mt-1 hidden">
+          🐧 Bộ mầy không có tên hả gì?
+        </p>
+      </div>
+
+      <!-- Số điện thoại -->
+      <div class="mb-4">
+        <label for="phone">Số điện thoại / Zalo</label>
+        <input type="tel" id="phone" name="phone" />
+        <p id="error-phone" class="text-red-400 text-sm mt-1 hidden">
+          📱 Nhập số điện thoại đi bạn ơi!
+        </p>
+      </div>
+
+      <!-- Nhân vật -->
+      <div class="mb-4">
+        <label for="character">Nhân vật yêu thích</label>
+        <select id="character" name="character">
+          <option value="">-- Chọn nhân vật --</option>
+          <option value="Yugo">Yugo</option>
+          <option value="Alice">Alice</option>
+          <option value="Long">Long</option>
+          <option value="Bakuryu">Bakuryu</option>
+          <option value="Shina">Shina</option>
+        </select>
+        <p id="error-character" class="text-red-400 text-sm mt-1 hidden">
+          🦁 Bạn chưa chọn nhân vật mà!
+        </p>
+      </div>
+
+      <!-- Ghi chú -->
+      <div class="mb-4">
+        <label for="note">Ghi chú thêm (tùy chọn)</label>
+        <textarea id="note" name="note" rows="3"></textarea>
+      </div>
+
+      <!-- Nút gửi -->
+      <button type="submit"
+        class="w-full py-2 bg-yellow-400 hover:bg-yellow-300 text-black font-semibold rounded-xl transition">
+        Gửi đăng ký
+      </button>
+    </form>
   </div>
 
-  <div class="mb-4">
-    <label for="phone">Số điện thoại / Zalo</label>
-    <input type="tel" id="phone" name="phone" />
-  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("formDangKy");
 
-  <div class="mb-4">
-    <label for="character">Nhân vật yêu thích</label>
-    <select id="character" name="character">
-      <option value="">-- Chọn nhân vật --</option>
-      <option value="Yugo">Yugo</option>
-      <option value="Alice">Alice</option>
-      <option value="Bakuryu">Bakuryu</option>
-      <option value="Long">Long</option>
-      <option value="Shina">Shina</option>
-    </select>
-  </div>
+      const nameInput = document.getElementById("name");
+      const phoneInput = document.getElementById("phone");
+      const characterInput = document.getElementById("character");
 
-  <div class="mb-4">
-    <label for="note">Ghi chú thêm (nếu có)</label>
-    <textarea id="note" name="note" rows="3"></textarea>
-  </div>
+      const errorName = document.getElementById("error-name");
+      const errorPhone = document.getElementById("error-phone");
+      const errorCharacter = document.getElementById("error-character");
 
-  <button type="submit"
-    class="w-full py-2 bg-yellow-400 hover:bg-yellow-300 text-black font-semibold rounded-xl transition">
-    Gửi đăng ký
-  </button>
-</form>
-  </div>
+      form.addEventListener("submit", function (e) {
+        let hasError = false;
+
+        // Kiểm tra tên
+        if (nameInput.value.trim() === "") {
+          errorName.classList.remove("hidden");
+          nameInput.classList.add("border-red-400");
+          hasError = true;
+        } else {
+          errorName.classList.add("hidden");
+          nameInput.classList.remove("border-red-400");
+        }
+
+        // Kiểm tra điện thoại
+        if (phoneInput.value.trim() === "") {
+          errorPhone.classList.remove("hidden");
+          phoneInput.classList.add("border-red-400");
+          hasError = true;
+        } else {
+          errorPhone.classList.add("hidden");
+          phoneInput.classList.remove("border-red-400");
+        }
+
+        // Kiểm tra chọn nhân vật
+        if (characterInput.value === "") {
+          errorCharacter.classList.remove("hidden");
+          characterInput.classList.add("border-red-400");
+          hasError = true;
+        } else {
+          errorCharacter.classList.add("hidden");
+          characterInput.classList.remove("border-red-400");
+        }
+
+        // Nếu có lỗi thì chặn gửi
+        if (hasError) {
+          e.preventDefault();
+        } else {
+          alert("✅ Đăng ký thành công! Chúc bạn chơi bá đạo luôn nha!");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
